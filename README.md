@@ -1,6 +1,10 @@
 # Velbus packet protocol
 Read this guide to understand how the packet protocol works and how it is structured.
 
+## Communication
+The communication between Velbus modules happens on byte level, these bytes make up a packet.
+
+Every Velbus module knows how to send and respond to these packets.
 
 ## Packet construction
 Each packet is split up into three sections.
@@ -12,7 +16,6 @@ The smallest possible packet has 6 bytes; 4 header bytes, 0 body bytes and 2 tai
 The largest possible packet has 14 bytes; 4 header bytes, 8 body bytes and 2 tail bytes.
 
 ### Header section
----
 The header is the preamble of the packet and consists out of 4 bytes. All bytes in the header are mandatory.
 
 ![Header section](https://github.com/velbus/packetprotocol/raw/master/img/header.jpg "Header section")
@@ -53,7 +56,6 @@ The low nibble consists out of the body length.
 The maximum body length of a Velbus packet is limited to 8 bytes, the document will go into detail on this subject in the [Body section](#Body-section).
 
 ### Body section
----
 The body marks the payload of the packet and can consist out of up to 8 bytes, but isn't required to have any data bytes at all.
 
 ![Body section](https://github.com/velbus/packetprotocol/raw/master/img/body.jpg "Body section")
@@ -61,15 +63,16 @@ The body marks the payload of the packet and can consist out of up to 8 bytes, b
 Usually in a packet, the first byte is used to indicate the command of the packet, check the [Examples section](#Examples) to get some concrete examples.
 
 ### Tail section
----
 The tail marks the end of the packet and consists out of 2 bytes. All of the bytes in the tail are mandatory.
 
 ![Tail section](https://github.com/velbus/packetprotocol/raw/master/img/tail.jpg "Tail section")
 
 #### Checksum
-This is the CRC8 checksum of all of the previous bytes.
+> **Important**
+>
+> Make sure that you are working with unsigned bytes while calculating the checksum!
 
-To calculate the checksum, take the sum all of all the previous bytes as an unsigned byte, then perform the 'two's compliment' on it.
+To calculate the checksum, take the sum of all the previous bytes and then perform the 'two's compliment' on it.
 
 #### End flag
 This byte marks the end of the packet and should **always** be 0x04.
@@ -124,7 +127,6 @@ Construct a packet with the following properties
 * set the fifth data byte to the second databyte to write
 * set the sixth data byte to the third databyte to write
 * set the seventh data byte to the fourth databyte to write
-
 
 Example for 4RYLD
 * Module address 0x4D
