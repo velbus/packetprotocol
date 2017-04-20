@@ -53,14 +53,14 @@ Should you wish to use RTR in the packet, mask the byte with 0x40.
 #### Body length
 The low nibble consists out of the body length.
 
-The maximum body length of a Velbus packet is limited to 8 bytes, the document will go into detail on this subject in the [Body section](#Body-section).
+The maximum body length of a Velbus packet is limited to 8 bytes, the document will go into detail on this subject in the [Body section](#body-section).
 
 ### Body section
 The body marks the payload of the packet and can consist out of up to 8 bytes, but isn't required to have any data bytes at all.
 
 ![Body section](https://github.com/velbus/packetprotocol/raw/master/img/body.jpg "Body section")
 
-Usually in a packet, the first byte is used to indicate the command of the packet, check the [Examples section](#Examples) to get some concrete examples.
+Usually in a packet, the first byte is used to indicate the command of the packet, check the [examples](#examples) to get some concrete usages.
 
 ### Tail section
 The tail marks the end of the packet and consists out of 2 bytes. All of the bytes in the tail are mandatory.
@@ -87,7 +87,7 @@ These examples only list a couple of commands that are available on the modules,
 > The address 0x00 in this case can not be used as a broadcast!
 
 Construct a packet with the following properties
-* [low priority](#Priority-flag)
+* [low priority](#priority-flag)
 * set the requested address
 * set the RTR mask (no data length)
 
@@ -98,7 +98,7 @@ Example for address 0x06
 ### Switch relay on
 
 Construct a packet with the following properties
-* [high priority](#Priority-flag) 
+* [high priority](#priority-flag) 
 * set the requested address
 * no RTR, two bytes data length
 * set the first data byte (command) to 0x02 "Switch relay on"
@@ -117,7 +117,7 @@ By using the 0xCA command, it is possible to write a sequence (block) of 4 bytes
 > Not every module supports the 0xCA command and has the same layout and size of the memory map so make sure that you consult each individual protocol manual!
 
 Construct a packet with the following properties
-* [low priority](#Priorityflag)
+* [low priority](#priority-flag)
 * set the requested address
 * no RTR, 7 bytes data length
 * set the first data byte (command) to 0xCA "Write memory block"
