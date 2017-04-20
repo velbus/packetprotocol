@@ -21,7 +21,7 @@ The header is the preamble of the packet and consists out of 4 bytes. All bytes 
 ![Header section](https://github.com/velbus/packetprotocol/raw/master/img/header.jpg "Header section")
 
 #### Start flag
-This byte marks the start of the packet and should **always** be 0x0F.
+This byte marks the start of the packet and should **always** be **0x0F**.
 
 #### Priority flag
 There are four different bytes assigned for priority, the table below lists them according to importance.
@@ -38,7 +38,7 @@ If there are colliding packets on the bus, the one with the higher importance wi
 #### Address
 A packet always contains an address and is used to address a specific module.
 
-If the packet is meant to be broadcast across every module, set the address to 0x00. This is why using the address 0x00 as a module address is not recommended.
+If the packet is meant to be broadcast across every module, set the address to **0x00**. This is why using the address 0x00 as a module address is not recommended.
 
 #### RTR and body length
 The RTR and body length byte is contained in one byte, and is split up in two parts. 
@@ -48,7 +48,7 @@ The RTR and body length byte is contained in one byte, and is split up in two pa
 #### RTR (Remote Transmit Request)
 The high nibble is used in a packet in which it requests information without supplying any data (e.g. scanning the bus).
 
-Should you wish to use RTR in the packet, mask the byte with 0x40.
+Should you wish to use RTR in the packet, mask the byte with **0x40**.
 
 #### Body length
 The low nibble consists out of the body length.
@@ -75,7 +75,7 @@ The tail marks the end of the packet and consists out of 2 bytes. All of the byt
 To calculate the checksum, take the sum of all the previous bytes and then perform the 'two's compliment' on it.
 
 #### End flag
-This byte marks the end of the packet and should **always** be 0x04.
+This byte marks the end of the packet and should **always** be **0x04**.
 
 ## Examples
 
@@ -84,7 +84,7 @@ These examples only list a couple of commands that are available on the modules,
 ### Scan
 > **Important** 
 >
-> The address 0x00 in this case can not be used as a broadcast!
+> The address 0x00 in this case can not be used for broadcasting!
 
 Construct a packet with the following properties
 * [low priority](#priority-flag)
@@ -104,7 +104,7 @@ Construct a packet with the following properties
 * set the first data byte (command) to 0x02 "Switch relay on"
 * set the second data byte to the channel number
 
-Example for 4RYLD with address 0x0B, channels number 2&3
+Example for 4RYLD with address 0x0B, channel numbers 2 & 3
 
 ![Switch relay on](https://github.com/velbus/packetprotocol/raw/master/img/relay-switch-on-packet.jpg "Switch relay on")
 
@@ -114,7 +114,7 @@ By using the 0xCA command, it is possible to write a sequence (block) of 4 bytes
 
 > **Important**
 >
-> Not every module supports the 0xCA command and has the same layout and size of the memory map so make sure that you consult each individual protocol manual!
+> Not every module supports the 0xCA command *and* has the same layout and size of the memory map so make sure that you consult each individual protocol manual!
 
 Construct a packet with the following properties
 * [low priority](#priority-flag)
@@ -129,8 +129,8 @@ Construct a packet with the following properties
 * set the seventh data byte to the fourth databyte to write
 
 Example for 4RYLD
-* Module address 0x4D
-* Memory address 0x00E4 (4 bytes so it extends to 0x00E7)
-* First four letters of the module name (skipping one since the first letter falls under the previous memory address)
+* module address 0x4D
+* memory address 0x00E4 (4 bytes so it extends to 0x00E7)
+* first four letters of the module name (skipping one since the first letter falls under the previous memory address)
 
 ![Write data block](https://github.com/velbus/packetprotocol/raw/master/img/write-data-block-packet.jpg "Write data block")
