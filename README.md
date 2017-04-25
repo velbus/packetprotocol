@@ -9,7 +9,25 @@ Every Velbus module knows how to send and respond to these packets.
 ## Packet construction
 Each packet is split up into three sections.
 
-![Packet construction](https://github.com/velbus/packetprotocol/raw/master/img/packet.jpg "Packet construction")
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th colspan="3" style="text-align:center; width: 400px;">Packet</th>
+		</tr>
+		<tr>
+			<th style="text-align:center; width: 125px;">Header</th>
+			<th style="text-align:center; width: 175px;">Body</th>
+			<th style="text-align:center; width: 100px;">Tail</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; width: 125px;">4 bytes</td>
+			<td style="text-align:center; width: 175px;">0-8 bytes</td>
+			<td style="text-align:center; width: 100px;">2 bytes</td>
+		</tr>
+	</tbody>
+</table>
 
 The smallest possible packet has 6 bytes; 4 header bytes, 0 body bytes and 2 tail bytes.
 
@@ -18,7 +36,27 @@ The largest possible packet has 14 bytes; 4 header bytes, 8 body bytes and 2 tai
 ### Header section
 The header is the preamble of the packet and consists out of 4 bytes. All bytes in the header are mandatory.
 
-![Header section](https://github.com/velbus/packetprotocol/raw/master/img/header.jpg "Header section")
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th colspan="4" style="text-align:center; width: 550px;">Header</th>
+		</tr>
+		<tr>
+			<th style="text-align:center; width: 100px;">Start flag</th>
+			<th style="text-align:center; width: 150px;">Priority flag</th>
+			<th style="text-align:center; width: 100px;">Address</th>
+			<th style="text-align:center; width: 200px;">RTR and body length</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; width: 100px;">1 byte</td>
+			<td style="text-align:center; width: 150px;">1 byte</td>
+			<td style="text-align:center; width: 200px;">1 byte</td>
+			<td style="text-align:center; width: 100px;">1 byte</td>
+		</tr>
+	</tbody>
+</table>
 
 #### Start flag
 This byte marks the start of the packet and should **always** be **0x0F**.
@@ -43,7 +81,23 @@ If the packet is meant to be broadcast across every module, set the address to *
 #### RTR and body length
 The RTR and body length byte is contained in one byte, and is split up in two parts. 
 
-![RTR and body length](https://github.com/velbus/packetprotocol/raw/master/img/rtr-bodylength.jpg "RTR and body length")
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th colspan="2" style="text-align:center; width: 300px;">RTR and body length</th>
+		</tr>
+		<tr>
+			<th style="text-align:center; width: 150px;">High nibble</th>
+			<th style="text-align:center; width: 150px;">Low nibble</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; width: 150px;">RTR</td>
+			<td style="text-align:center; width: 150px;">Body length</td>
+		</tr>
+	</tbody>
+</table>
 
 #### RTR (Remote Transmit Request)
 The high nibble is used in a packet in which it requests information without supplying any data (e.g. scanning the bus).
@@ -58,14 +112,44 @@ The maximum body length of a Velbus packet is limited to 8 bytes, the document w
 ### Body section
 The body marks the payload of the packet and can consist out of up to 8 bytes, but isn't required to have any data bytes at all.
 
-![Body section](https://github.com/velbus/packetprotocol/raw/master/img/body.jpg "Body section")
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th colspan="2" style="text-align:center; width: 100px;">Body</th>
+		</tr>
+		<tr>
+			<th style="text-align:center; width: 100px;">Data</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; width: 100px;">0-8 bytes</td>	
+		</tr>
+	</tbody>
+</table>
 
 Usually in a packet, the first byte is used to indicate the command of the packet, check the [examples](#examples) to get some concrete usages.
 
 ### Tail section
 The tail marks the end of the packet and consists out of 2 bytes. All of the bytes in the tail are mandatory.
 
-![Tail section](https://github.com/velbus/packetprotocol/raw/master/img/tail.jpg "Tail section")
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th colspan="2" style="text-align:center; width: 200px;">Tail</th>
+		</tr>
+		<tr>
+			<th style="text-align:center; width: 100px;">Checksum</th>
+			<th style="text-align:center; width: 100px;">End flag</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; width: 100px;">1 byte</td>
+			<td style="text-align:center; width: 100px;">1 byte</td>
+		</tr>
+	</tbody>
+</table>
 
 #### Checksum
 > **Important**
@@ -93,7 +177,32 @@ Construct a packet with the following properties
 
 Example for address 0x06
 
-![Scan packet](https://github.com/velbus/packetprotocol/raw/master/img/scan-packet.jpg "Scan packet")
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th colspan="4" style="text-align:center; width: 280px;">Header</th>
+			<th colspan="2" style="text-align:center; width: 140px;">Tail</th>
+		</tr>
+		<tr>
+			<th style="text-align:center; width: 70px;">STX</th>
+			<th style="text-align:center; width: 70px;">PRIO</th>
+			<th style="text-align:center; width: 70px;">ADDR</th>
+			<th style="text-align:center; width: 70px;">RTR+L</th>
+			<th style="text-align:center; width: 70px;">CRC</th>
+			<th style="text-align:center; width: 70px;">ETX</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; width: 70px;">0x0F</td>
+			<td style="text-align:center; width: 70px;">0xFB</td>
+			<td style="text-align:center; width: 70px;">0x06</td>
+			<td style="text-align:center; width: 70px;">0x40</td>
+			<td style="text-align:center; width: 70px;">0xB0</td>
+			<td style="text-align:center; width: 70px;">0x04</td>
+		</tr>
+	</tbody>
+</table>
 
 ### Switch relay on
 
@@ -106,7 +215,37 @@ Construct a packet with the following properties
 
 Example for 4RYLD with address 0x0B, channel numbers 2 & 3
 
-![Switch relay on](https://github.com/velbus/packetprotocol/raw/master/img/relay-switch-on-packet.jpg "Switch relay on")
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th colspan="4" style="text-align:center; width: 280px;">Header</th>
+			<th colspan="2" style="text-align:center; width: 140px;">Body</th>
+			<th colspan="2" style="text-align:center; width: 140px;">Tail</th>
+		</tr>
+		<tr>
+			<th style="text-align:center; width: 70px;">STX</th>
+			<th style="text-align:center; width: 70px;">PRIO</th>
+			<th style="text-align:center; width: 70px;">ADDR</th>
+			<th style="text-align:center; width: 70px;">RTR+L</th>
+			<th style="text-align:center; width: 70px;">D1</th>
+			<th style="text-align:center; width: 70px;">D2</th>
+			<th style="text-align:center; width: 70px;">CRC</th>
+			<th style="text-align:center; width: 70px;">ETX</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; width: 70px;">0x0F</td>
+			<td style="text-align:center; width: 70px;">0xFB</td>
+			<td style="text-align:center; width: 70px;">0x0B</td>
+			<td style="text-align:center; width: 70px;">0x02</td>
+			<td style="text-align:center; width: 70px;">0x02</td>
+			<td style="text-align:center; width: 70px;">0x04</td>
+			<td style="text-align:center; width: 70px;">0xE4</td>
+			<td style="text-align:center; width: 70px;">0x04</td>
+		</tr>
+	</tbody>
+</table>
 
 ### Write data to the memory map
 
@@ -133,4 +272,44 @@ Example for 4RYLD
 * memory address 0x00E4 (4 bytes so it extends to 0x00E7)
 * first four letters of the module name (skipping one since the first letter falls under the previous memory address)
 
-![Write data block](https://github.com/velbus/packetprotocol/raw/master/img/write-data-block-packet.jpg "Write data block")
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th colspan="4" style="text-align:center; width: 280px;">Header</th>
+			<th colspan="7" style="text-align:center; width: 490px;">Body</th>
+			<th colspan="2" style="text-align:center; width: 140px;">Tail</th>
+		</tr>
+		<tr>
+			<th style="text-align:center; width: 70px;">STX</th>
+			<th style="text-align:center; width: 70px;">PRIO</th>
+			<th style="text-align:center; width: 70px;">ADDR</th>
+			<th style="text-align:center; width: 70px;">RTR+L</th>
+			<th style="text-align:center; width: 70px;">D1</th>
+			<th style="text-align:center; width: 70px;">D2</th>
+			<th style="text-align:center; width: 70px;">D3</th>
+			<th style="text-align:center; width: 70px;">D4</th>
+			<th style="text-align:center; width: 70px;">D5</th>
+			<th style="text-align:center; width: 70px;">D6</th>
+			<th style="text-align:center; width: 70px;">D7</th>
+			<th style="text-align:center; width: 70px;">CRC</th>
+			<th style="text-align:center; width: 70px;">ETX</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center; width: 70px;">0x0F</td>
+			<td style="text-align:center; width: 70px;">0xFB</td>
+			<td style="text-align:center; width: 70px;">0x4D</td>
+			<td style="text-align:center; width: 70px;">0x07</td>
+			<td style="text-align:center; width: 70px;">0xCA</td>
+			<td style="text-align:center; width: 70px;">0x00</td>
+			<td style="text-align:center; width: 70px;">0xE4</td>
+			<td style="text-align:center; width: 70px;">0x4D</td>
+			<td style="text-align:center; width: 70px;">0x42</td>
+			<td style="text-align:center; width: 70px;">0x34</td>
+			<td style="text-align:center; width: 70px;">0x52</td>
+			<td style="text-align:center; width: 70px;">0xDF</td>
+			<td style="text-align:center; width: 70px;">0x04</td>
+		</tr>
+	</tbody>
+</table>
