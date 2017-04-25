@@ -163,7 +163,7 @@ This byte marks the end of the packet and should **always** be **0x04**.
 
 ## Examples
 
-These examples only list a couple of commands that are available on the modules, for more information please refer to the module protocol manuals.
+These examples only list a couple of commands that are available on the modules, for more information please refer to the [module protocol manuals](https://github.com/velbus/moduleprotocol).
 
 ### Scan
 > **Important** 
