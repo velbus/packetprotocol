@@ -12,26 +12,26 @@ Each packet is split up into three sections.
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th colspan="3" align="center" style="width: 400px;">Packet</th>
+			<th colspan="3" align="center" width=400px">Packet</th>
 		</tr>
 		<tr>
-			<th align="center" style="width: 125px;">Header</th>
-			<th align="center" style="width: 175px;">Body</th>
-			<th align="center" style="width: 100px;">Tail</th>
+			<th align="center" width="125px">Header</th>
+			<th align="center" width="175px">Body</th>
+			<th align="center" width="100px">Tail</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center" style="width: 125px;">4 bytes</td>
-			<td align="center" style="width: 175px;">0-8 bytes</td>
-			<td align="center" style="width: 100px;">2 bytes</td>
+			<td align="center" width="125px">4 bytes</td>
+			<td align="center" width="175px">0-8 bytes</td>
+			<td align="center" width="100px">2 bytes</td>
 		</tr>
 	</tbody>
 </table>
 
-The smallest possible packet has 6 bytes; 4 header bytes, 0 body bytes and 2 tail bytes.
+The smallest possible packet has 6 bytes 4 header bytes, 0 body bytes and 2 tail bytes.
 
-The largest possible packet has 14 bytes; 4 header bytes, 8 body bytes and 2 tail bytes.
+The largest possible packet has 14 bytes 4 header bytes, 8 body bytes and 2 tail bytes.
 
 ### Header section
 The header is the preamble of the packet and consists out of 4 bytes. All bytes in the header are mandatory.
@@ -39,21 +39,21 @@ The header is the preamble of the packet and consists out of 4 bytes. All bytes 
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th colspan="4" align="center" style="width: 550px;">Header</th>
+			<th colspan="4" align="center" width="550px">Header</th>
 		</tr>
 		<tr>
-			<th align="center" style="width: 100px;">Start flag</th>
-			<th align="center" style="width: 150px;">Priority flag</th>
-			<th align="center" style="width: 100px;">Address</th>
-			<th align="center" style="width: 200px;">RTR and body length</th>
+			<th align="center" width="100px">Start flag</th>
+			<th align="center" width="150px">Priority flag</th>
+			<th align="center" width="100px">Address</th>
+			<th align="center" width="200px">RTR and body length</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center" style="width: 100px;">1 byte</td>
-			<td align="center" style="width: 150px;">1 byte</td>
-			<td align="center" style="width: 200px;">1 byte</td>
-			<td align="center" style="width: 100px;">1 byte</td>
+			<td align="center" width=100px">1 byte</td>
+			<td align="center" width=150px">1 byte</td>
+			<td align="center" width=200px">1 byte</td>
+			<td align="center" width=100px">1 byte</td>
 		</tr>
 	</tbody>
 </table>
@@ -84,17 +84,17 @@ The RTR and body length byte is contained in one byte, and is split up in two pa
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th colspan="2" align="center" style="width: 300px;">RTR and body length</th>
+			<th colspan="2" align="center" width=300px">RTR and body length</th>
 		</tr>
 		<tr>
-			<th align="center" style="width: 150px;">High nibble</th>
-			<th align="center" style="width: 150px;">Low nibble</th>
+			<th align="center" width=150px">High nibble</th>
+			<th align="center" width=150px">Low nibble</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center" style="width: 150px;">RTR</td>
-			<td align="center" style="width: 150px;">Body length</td>
+			<td align="center" width=150px">RTR</td>
+			<td align="center" width=150px">Body length</td>
 		</tr>
 	</tbody>
 </table>
@@ -115,15 +115,15 @@ The body marks the payload of the packet and can consist out of up to 8 bytes, b
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th colspan="2" align="center" style="width: 100px;">Body</th>
+			<th colspan="2" align="center" width=100px">Body</th>
 		</tr>
 		<tr>
-			<th align="center" style="width: 100px;">Data</th>
+			<th align="center" width=100px">Data</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center" style="width: 100px;">0-8 bytes</td>	
+			<td align="center" width=100px">0-8 bytes</td>	
 		</tr>
 	</tbody>
 </table>
@@ -136,17 +136,17 @@ The tail marks the end of the packet and consists out of 2 bytes. All of the byt
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th colspan="2" align="center" style="width: 200px;">Tail</th>
+			<th colspan="2" align="center" width=200px">Tail</th>
 		</tr>
 		<tr>
-			<th align="center" style="width: 100px;">Checksum</th>
-			<th align="center" style="width: 100px;">End flag</th>
+			<th align="center" width=100px">Checksum</th>
+			<th align="center" width=100px">End flag</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center" style="width: 100px;">1 byte</td>
-			<td align="center" style="width: 100px;">1 byte</td>
+			<td align="center" width=100px">1 byte</td>
+			<td align="center" width=100px">1 byte</td>
 		</tr>
 	</tbody>
 </table>
@@ -180,26 +180,26 @@ Example for address 0x06
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th colspan="4" align="center" style="width: 280px;">Header</th>
-			<th colspan="2" align="center" style="width: 140px;">Tail</th>
+			<th colspan="4" align="center" width=280px">Header</th>
+			<th colspan="2" align="center" width=140px">Tail</th>
 		</tr>
 		<tr>
-			<th align="center" style="width: 70px;">STX</th>
-			<th align="center" style="width: 70px;">PRIO</th>
-			<th align="center" style="width: 70px;">ADDR</th>
-			<th align="center" style="width: 70px;">RTR+L</th>
-			<th align="center" style="width: 70px;">CRC</th>
-			<th align="center" style="width: 70px;">ETX</th>
+			<th align="center" width=70px">STX</th>
+			<th align="center" width=70px">PRIO</th>
+			<th align="center" width=70px">ADDR</th>
+			<th align="center" width=70px">RTR+L</th>
+			<th align="center" width=70px">CRC</th>
+			<th align="center" width=70px">ETX</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center" style="width: 70px;">0x0F</td>
-			<td align="center" style="width: 70px;">0xFB</td>
-			<td align="center" style="width: 70px;">0x06</td>
-			<td align="center" style="width: 70px;">0x40</td>
-			<td align="center" style="width: 70px;">0xB0</td>
-			<td align="center" style="width: 70px;">0x04</td>
+			<td align="center" width=70px">0x0F</td>
+			<td align="center" width=70px">0xFB</td>
+			<td align="center" width=70px">0x06</td>
+			<td align="center" width=70px">0x40</td>
+			<td align="center" width=70px">0xB0</td>
+			<td align="center" width=70px">0x04</td>
 		</tr>
 	</tbody>
 </table>
@@ -218,31 +218,31 @@ Example for 4RYLD with address 0x0B, channel numbers 2 & 3
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th colspan="4" align="center" style="width: 280px;">Header</th>
-			<th colspan="2" align="center" style="width: 140px;">Body</th>
-			<th colspan="2" align="center" style="width: 140px;">Tail</th>
+			<th colspan="4" align="center" width=280px">Header</th>
+			<th colspan="2" align="center" width=140px">Body</th>
+			<th colspan="2" align="center" width=140px">Tail</th>
 		</tr>
 		<tr>
-			<th align="center" style="width: 70px;">STX</th>
-			<th align="center" style="width: 70px;">PRIO</th>
-			<th align="center" style="width: 70px;">ADDR</th>
-			<th align="center" style="width: 70px;">RTR+L</th>
-			<th align="center" style="width: 70px;">D1</th>
-			<th align="center" style="width: 70px;">D2</th>
-			<th align="center" style="width: 70px;">CRC</th>
-			<th align="center" style="width: 70px;">ETX</th>
+			<th align="center" width=70px">STX</th>
+			<th align="center" width=70px">PRIO</th>
+			<th align="center" width=70px">ADDR</th>
+			<th align="center" width=70px">RTR+L</th>
+			<th align="center" width=70px">D1</th>
+			<th align="center" width=70px">D2</th>
+			<th align="center" width=70px">CRC</th>
+			<th align="center" width=70px">ETX</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center" style="width: 70px;">0x0F</td>
-			<td align="center" style="width: 70px;">0xFB</td>
-			<td align="center" style="width: 70px;">0x0B</td>
-			<td align="center" style="width: 70px;">0x02</td>
-			<td align="center" style="width: 70px;">0x02</td>
-			<td align="center" style="width: 70px;">0x04</td>
-			<td align="center" style="width: 70px;">0xE4</td>
-			<td align="center" style="width: 70px;">0x04</td>
+			<td align="center" width=70px">0x0F</td>
+			<td align="center" width=70px">0xFB</td>
+			<td align="center" width=70px">0x0B</td>
+			<td align="center" width=70px">0x02</td>
+			<td align="center" width=70px">0x02</td>
+			<td align="center" width=70px">0x04</td>
+			<td align="center" width=70px">0xE4</td>
+			<td align="center" width=70px">0x04</td>
 		</tr>
 	</tbody>
 </table>
@@ -275,41 +275,41 @@ Example for 4RYLD
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th colspan="4" align="center" style="width: 280px;">Header</th>
-			<th colspan="7" align="center" style="width: 490px;">Body</th>
-			<th colspan="2" align="center" style="width: 140px;">Tail</th>
+			<th colspan="4" align="center" width=280px">Header</th>
+			<th colspan="7" align="center" width=490px">Body</th>
+			<th colspan="2" align="center" width=140px">Tail</th>
 		</tr>
 		<tr>
-			<th align="center" style="width: 70px;">STX</th>
-			<th align="center" style="width: 70px;">PRIO</th>
-			<th align="center" style="width: 70px;">ADDR</th>
-			<th align="center" style="width: 70px;">RTR+L</th>
-			<th align="center" style="width: 70px;">D1</th>
-			<th align="center" style="width: 70px;">D2</th>
-			<th align="center" style="width: 70px;">D3</th>
-			<th align="center" style="width: 70px;">D4</th>
-			<th align="center" style="width: 70px;">D5</th>
-			<th align="center" style="width: 70px;">D6</th>
-			<th align="center" style="width: 70px;">D7</th>
-			<th align="center" style="width: 70px;">CRC</th>
-			<th align="center" style="width: 70px;">ETX</th>
+			<th align="center" width=70px">STX</th>
+			<th align="center" width=70px">PRIO</th>
+			<th align="center" width=70px">ADDR</th>
+			<th align="center" width=70px">RTR+L</th>
+			<th align="center" width=70px">D1</th>
+			<th align="center" width=70px">D2</th>
+			<th align="center" width=70px">D3</th>
+			<th align="center" width=70px">D4</th>
+			<th align="center" width=70px">D5</th>
+			<th align="center" width=70px">D6</th>
+			<th align="center" width=70px">D7</th>
+			<th align="center" width=70px">CRC</th>
+			<th align="center" width=70px">ETX</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center" style="width: 70px;">0x0F</td>
-			<td align="center" style="width: 70px;">0xFB</td>
-			<td align="center" style="width: 70px;">0x4D</td>
-			<td align="center" style="width: 70px;">0x07</td>
-			<td align="center" style="width: 70px;">0xCA</td>
-			<td align="center" style="width: 70px;">0x00</td>
-			<td align="center" style="width: 70px;">0xE4</td>
-			<td align="center" style="width: 70px;">0x4D</td>
-			<td align="center" style="width: 70px;">0x42</td>
-			<td align="center" style="width: 70px;">0x34</td>
-			<td align="center" style="width: 70px;">0x52</td>
-			<td align="center" style="width: 70px;">0xDF</td>
-			<td align="center" style="width: 70px;">0x04</td>
+			<td align="center" width=70px">0x0F</td>
+			<td align="center" width=70px">0xFB</td>
+			<td align="center" width=70px">0x4D</td>
+			<td align="center" width=70px">0x07</td>
+			<td align="center" width=70px">0xCA</td>
+			<td align="center" width=70px">0x00</td>
+			<td align="center" width=70px">0xE4</td>
+			<td align="center" width=70px">0x4D</td>
+			<td align="center" width=70px">0x42</td>
+			<td align="center" width=70px">0x34</td>
+			<td align="center" width=70px">0x52</td>
+			<td align="center" width=70px">0xDF</td>
+			<td align="center" width=70px">0x04</td>
 		</tr>
 	</tbody>
 </table>
