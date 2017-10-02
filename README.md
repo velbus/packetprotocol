@@ -29,9 +29,9 @@ Each packet is split up into three sections.
 	</tbody>
 </table>
 
-The smallest possible packet has 6 bytes 4 header bytes, 0 body bytes and 2 tail bytes.
+The smallest possible packet has 6 bytes; 4 header bytes, 0 body bytes and 2 tail bytes.
 
-The largest possible packet has 14 bytes 4 header bytes, 8 body bytes and 2 tail bytes.
+The largest possible packet has 14 bytes; 4 header bytes, 8 body bytes and 2 tail bytes.
 
 ### Header section
 The header is the preamble of the packet and consists out of 4 bytes. All bytes in the header are mandatory.
@@ -236,7 +236,7 @@ Example for 4RYLD with address 0x0B, channel numbers 2 & 3
 	<tbody>
 		<tr>
 			<td align="center" width=70px">0x0F</td>
-			<td align="center" width=70px">0xFB</td>
+			<td align="center" width=70px">0xF8</td>
 			<td align="center" width=70px">0x0B</td>
 			<td align="center" width=70px">0x02</td>
 			<td align="center" width=70px">0x02</td>
