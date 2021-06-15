@@ -240,7 +240,7 @@ Example for 4RYLD with address 0x0B, channel numbers 2 & 3
 			<td align="center" width=70px">0x0B</td>
 			<td align="center" width=70px">0x02</td>
 			<td align="center" width=70px">0x02</td>
-			<td align="center" width=70px">0x04</td>
+			<td align="center" width=70px">0x06</td>
 			<td align="center" width=70px">0xE4</td>
 			<td align="center" width=70px">0x04</td>
 		</tr>
